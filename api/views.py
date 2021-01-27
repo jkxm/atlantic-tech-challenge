@@ -51,7 +51,8 @@ def get_subscription(request, id):
 
 @api_view(['POST'])
 def receive_customer(request):
-    serializer = CustomerSerializer(data=request.data)
+    data = request.data["customer"]
+    serializer = CustomerSerializer(data=data)
 
     if serializer.is_valid():
         serializer.save()
