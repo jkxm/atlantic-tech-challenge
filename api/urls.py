@@ -7,4 +7,5 @@ urlpatterns = [
     path('all_subscriptions/', views.all_subscriptions),
     path('get_customer/<str:id>/', views.get_customer),
     path('get_subscription/<str:id>/', views.get_subscription),
+    path('receive_customer', views.receive_customer)
 ]

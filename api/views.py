@@ -12,7 +12,7 @@ def api_overview(request):
         'All Subsciptions': '/all_subscriptions',
         'Specific Customer': 'get_customer/<str:id>/',
         'Specific Subscription': 'get_subscription/<str:id>/',
-        # 'Receive '
+        'Receive Customer': 'receive_customer/',
     }
 
     return Response(api_urls)
@@ -49,3 +49,13 @@ def get_subscription(request, id):
     return Response(serializer.data)
 
 
+@api_view(['POST'])
+def receive_customer(request):
+    serializer = CustomerSerializer(data=request.data)
+
+    if serializer.is_valid():
+        serializer.save()
+
+        return Response(serializer.data)
+
+    return Response(serializer.errors)
