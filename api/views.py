@@ -6,6 +6,18 @@ from .models import *
 
 # Create your views here.
 @api_view(['GET'])
+def api_overview(request):
+    api_urls = {
+        'All Customers': '/all_customers/',
+        'All Subsciptions': '/all_subscriptions',
+        'Specific Customer': 'get_customer/<str:id>/',
+        'Specific Subscription': 'get_subscription/<str:id>/',
+        # 'Receive '
+    }
+
+    return Response(api_urls)
+
+@api_view(['GET'])
 def all_customers(request):
     customers = Customer.objects.all()
     serializer = CustomerSerializer(customers, many=True)
