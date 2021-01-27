@@ -32,6 +32,13 @@ def all_subscriptions(request):
 
     return Response(serializer.data)
 
+@api_view(['GET'])
+def all_gifts(request):
+    gifts = Gifts.objects.all()
+    serializer = GiftsSerializer(gifts, many=True)
+
+    return Response(serializer.data)
+
 
 @api_view(['GET'])
 def get_customer(request, id):

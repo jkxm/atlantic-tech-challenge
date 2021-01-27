@@ -16,7 +16,7 @@ class GiftsSerializer(serializers.ModelSerializer):
 
 class CustomerSerializer(serializers.ModelSerializer):
     subscription = SubscriptionSerializer()
-    gifts = SubscriptionSerializer(many=True)
+    gifts = GiftsSerializer(many=True)
 
     class Meta:
         model = Customer

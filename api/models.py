@@ -22,7 +22,7 @@ class Gifts(models.Model):
 
 class Subscription(models.Model):
     id = models.CharField(max_length=100, primary_key=True)
-    customer = models.ForeignKey('Customer', on_delete=models.CASCADE, related_name='subscription')
+    customer = models.OneToOneField('Customer', on_delete=models.CASCADE, related_name='subscription')
     plan_name = models.CharField(max_length=100)
     price = models.IntegerField()
 
